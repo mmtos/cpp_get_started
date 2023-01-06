@@ -75,6 +75,8 @@ MMLL
 	for(int i = 0; i < n; i++){
 		for(int j = 0; j < m; j++){
 			scanf(" %c", &a[i][j]);
+			/* 앞에 공백이 없으면  줄바꿈 문자가 들어가게 됨  */
+			//scanf("%c", &a[i][j]);
 		}
 	}
 	
@@ -87,6 +89,12 @@ MMLL
 }
 
 int main(){
+	/**/
+	//getInputToString();
+	
+	/**/
+	//getInputToInt();
+	
 	/* 붙어있는 숫자나 문자 받기 */
 	getCharInput();
 	return 0;

@@ -3,7 +3,7 @@
 
 // POSIX 라이브러리가 일반적임
 // 다른 3rd의 라이브러리도 있긴있음. (ANSI.. 자동차 .. )  
-int main( void ){
+int main(void){
 
     unsigned char src[62];
     unsigned char dest[62];

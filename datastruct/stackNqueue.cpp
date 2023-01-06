@@ -14,13 +14,12 @@ void stackTest(){
 	while(stk.size()){
 		cout << stk.top() << "\n";
 		stk.pop();
-	} 
-	
+	}
 }
 
 void queueTest(){
 	queue<int> q;
-	for(int i = 1; i <= 10; i++)q.push(i);
+	for(int i = 1; i <= 10; i++) q.push(i);
 	while(q.size()){
 		cout << q.front() << ' ';
 		q.pop();

@@ -16,6 +16,7 @@ void printVector(vector<pair<int,int>> &v){
 }
 
 void makePairTest(){
+	cout << "\n=====" << __func__ << "=====\n";
 	int a,b;
 	pair<int,int> pi = {1, 2};
 	printf("%d %d",pi.first,pi.second);
@@ -26,6 +27,7 @@ void makePairTest(){
 }
 
 void makeTupleTest(){
+	cout << "\n=====" << __func__ << "=====\n";
 	int a,b,c;
 	tuple<int, int, int> tl;
 	tl = make_tuple(1,2,3);
@@ -43,8 +45,9 @@ void makeTupleTest(){
 	cout << '\n';
 }
 
-// sort  array나 vector와 같은 컨테이너를 정렬할때 사용 
+// sort : array나 vector와 같은 컨테이너를 정렬할때 사용 
 void sortTest(){
+	cout << "\n=====" << __func__ << "=====\n";
 	// [first , last)
 	vector<int> a;
 	for(int i=5; i>=1; i--) {
@@ -55,9 +58,11 @@ void sortTest(){
 	sort(a.begin(), a.end());
 	printVector(a);
 	
+	// 큰것 부터 
 	sort(a.begin(), a.end(), greater<int>());
 	printVector(a);
 	
+	// 작은것 부터 
 	sort(a.begin(), a.end(), less<int>());
 	printVector(a);
 }
@@ -66,7 +71,9 @@ bool cmp(pair<int,int> a, pair<int,int> b){
 	// true인 경우 첫번째 인자가 더 앞에 정렬된다. 
 	return a.first > b.first;
 }
+
 void sortWithCustomFnTest(){
+	cout << "\n=====" << __func__ << "=====\n";
 	vector<pair<int,int>> a;
 	for(int i=10; i>=1; i--) {
 		a.push_back({i, 10-i});	
@@ -74,9 +81,11 @@ void sortWithCustomFnTest(){
 	
 	printVector(a);
 	
+	// 기본정렬(first 오름차순) 
 	sort(a.begin(), a.end());
 	printVector(a);
 	
+	// 커스텀 정렬(first 내림차순)
 	sort(a.begin(), a.end(), cmp);
 	printVector(a);
 }

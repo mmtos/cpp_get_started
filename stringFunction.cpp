@@ -27,7 +27,12 @@ void splitTest(){
 	vector<string> c = split(s2, d);
 	// 4 3 5 2 띄어쓰기를 찾아 해당 첫번째 인덱스를 반환한다.
 	// 문자열이 erase되기 때문에 aaaa, bb 이런식으로 되는 것도 생각.
+	
+	cout << "\n=====" << __func__ << "=====\n";
 	for(string b : a) {
+		cout << b << "\n";
+	}
+	for(string b : c) {
 		cout << b << "\n";
 	}
 }
@@ -37,6 +42,8 @@ int stringToInt(string target){
 } 
 
 void stringToIntTest(){
+	
+	cout << "\n=====" << __func__ << "=====\n";
 	cout << stringToInt("123") << "\n";
 	cout << stringToInt("abc") << "\n";
 }
@@ -47,6 +54,8 @@ int main(){
 	if(gStr.find("is") != string::npos){
 		// 가장 처음에 찾은 index를 return 
 		cout << gStr.find("is") << "\n";
+		
+		// 검색할 문자열을 찾지 못한경우 npos와 동일한지 확인  
 		cout << gStr.find("that") << "\n";
 		cout << string::npos << "\n";
 	}

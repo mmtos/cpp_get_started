@@ -4,6 +4,7 @@ struct Point{
 	int y, x;
 	Point(int y, int x) : y(y), x(x){}
 	Point(){y = -1; x = -1; }
+	// a < b면 a가 순서상 앞에 있다. 
 	bool operator < (const Point & a) const{
 		// 내림차순
 		return x > a.x;

@@ -35,15 +35,13 @@ void array2DmodifyTest(){
 
 void print2DArray(vector<vector<int>> &vv){
 	for(vector<int> v : vv){
-	cout << "[";
+		cout << "[";
 		for(int i : v){
 			cout << i << ", ";
 		}
 		cout << "]\n";
 	}
 	cout << "\n";
-	cout << "\n";
-	
 }
 
 void rotateCounterClockwise(vector<vector<int>> &key){
@@ -56,7 +54,18 @@ void rotateCounterClockwise(vector<vector<int>> &key){
 	vector<vector<int>> temp(n, vector<int>(m, 0));
 	for(int i = 0; i < m; i++){
 		for(int j = 0; j < n; j++){
-			// 
+			// n = m = 3인 경우, 
+			/* 
+			 // 1행 
+			 0,0 -> 2,0
+			 0,1 -> 1,0
+			 0,2 -> 0,0
+			 
+			 // 1열 
+			 0,0 -> 2,0
+			 1,0 -> 2,1
+			 2,0 -> 2,2 
+			*/
 			temp[n-j-1][i] = key[i][j];
 		}
 	}
@@ -74,7 +83,18 @@ void rotateClockwise(vector<vector<int>> &key){
 	vector<vector<int>> temp(n, vector<int>(m, 0));
 	for(int i = 0; i < m; i++){
 		for(int j = 0; j < n; j++){
-			// 
+			// n = m = 3인 경우, 
+			/* 
+			 // 1행 
+			 0,0 -> 0,2
+			 0,1 -> 1,2
+			 0,2 -> 2,2
+			 
+			 // 1열 
+			 0,0 -> 0,2
+			 1,0 -> 0,1
+			 2,0 -> 0,0 
+			*/ 
 			temp[j][m-i-1] = key[i][j];
 		}
 	}

@@ -2,7 +2,7 @@
 using namespace std;
 
 void printMap(map<string, int> &m){
-	// pair가 맞다. 
+	// map의 각 entry는 pair 타입이다. 
 	for(pair<string,int> i : m){
 		cout << i.first << ":" <<  i.second << ", ";
 	}
@@ -10,8 +10,7 @@ void printMap(map<string, int> &m){
 }
 
 void printMap(unordered_map<string, int> &m){
-	// pair가 맞다. 
-	for(pair<string,int> i : m){
+	for(auto i : m){
 		cout << i.first << ":" <<  i.second << ", ";
 	}
 	cout << "\n";
@@ -36,6 +35,7 @@ unordered_map<string, int> createTestDummyUnOrderedMap(){
 void basicOperation(){
 	map<string, int> m = createTestDummyMap();
 	
+	m["test1"]++;	
 	m["test3"] = 5;
 	
 	printMap(m);
@@ -48,7 +48,7 @@ void basicOperation(){
 	}
 	
 	if(m["test4"] == 0){
-		cout << "implicit insert";
+		cout << "implicit insert : test4" << "\n";
 	}
 	printMap(m);
 	
@@ -56,8 +56,6 @@ void basicOperation(){
 	if(m.find("test5") == m.end()){
 		m.emplace("test5", 5);
 	}
-	
-	m["test1"]++;
 	printMap(m);
 	
 } 
@@ -65,6 +63,7 @@ void basicOperation(){
 // https://eehoeskrap.tistory.com/263 
 void iteratorTest(){
 	map<string, int> emptyMap;
+	
 	// 아무 원소도 없는 컨테이너의 begin()과 end()는 같다. 
 	cout << (emptyMap.begin() == emptyMap.end()) << "\n";
 	
@@ -74,7 +73,7 @@ void iteratorTest(){
  		cout << it -> first << ":" << it -> second << " ";
 	} 
 	
-	// m.end()는  past-the-end iterator 
+	// m.end()는  past-the-end iterator (실제 마지막 원소보다 한칸 뒤임) 
 	auto last = --m.end();  
 	cout << (*last).first << ":" << (*last).second;
 }
@@ -92,8 +91,9 @@ void unOrderedMapTest(){
 
 int main(){
 	// https://cplusplus.com/reference/map/map/
-	//std의 map은 red black tree? 정렬, 균형,  
-	// 탐색, 삽입, 삭제에 O(logN)이 걸림 왜? 
+	// std의 map은 red black tree  
+	// 탐색, 삽입, 삭제에 O(logN)이 걸림 
+	// red black tree 구현해보기 
 	cout << "\n===basicOperation===\n";
 	basicOperation();
 	cout << "\n===iteratorTest===\n";
