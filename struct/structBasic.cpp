@@ -3,7 +3,7 @@ using namespace std;
 
 struct Point{
 	int y, x;
-	Point(int y, int x) : y(y), x(x){}
+	Point(int py, int px) : y(py), x(px){}
 	Point(){
 		y = -1; x = -1;
 	}
