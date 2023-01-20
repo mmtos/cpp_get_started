@@ -115,6 +115,43 @@ void matrixRotateTest(){
 	print2DArray(vv);
 }
 
+
+void vectorFindTest(){
+	cout << "\n=====" << __func__ << "=====\n";
+	vector<int> a = {1,2,3};
+	auto it = find(a.begin(),a.end(),3);
+	if(it == a.end()){
+		cout << "not found";
+	}else{
+		cout << find(a.begin(),a.end(),3) - a.begin() <<"\n";
+	}
+	
+}
+
+void vectorCopyTest(){
+	// https://terrorjang.tistory.com/85
+	cout << "\n=====" << __func__ << "=====\n";
+	vector<int> a = {1,2,3};
+	vector<int> b,c;
+	// resize ÇÊ¼ö  
+	b.resize((int)(a.size()));
+	copy(a.begin(),a.end(),b.begin());
+	for(int i:b) cout << i <<", ";
+	cout << "\n";
+	
+	
+	c.assign(a.begin(),a.end());
+	for(int i:c) cout << i <<", ";
+	cout << "\n";
+}
+
+void vectorPeekTest(){
+	cout << "\n=====" << __func__ << "=====\n";
+	vector<int> a = {1,2,3};
+	cout << a.front() << "\n";
+	cout << a.back() << "\n";
+}
+
 int main(){
 	cout << "\n===vectorSumTest===\n";
 	vectorSumTest();
@@ -124,6 +161,10 @@ int main(){
 	array2DmodifyTest();
 	cout << "\n===matrixRotateTest===\n";
 	matrixRotateTest();
+	
+	vectorFindTest();
+	vectorCopyTest();
+	vectorPeekTest();
 	return 0;
 }
 
