@@ -1,85 +1,65 @@
 #include <iostream>
+#include <string>
+
 using namespace std;
 
-typedef struct ArrayQueue {
-	int front; //in 위치는 0으로 고정..  
-	int rear; //out 위치 
-	int capacity;
-	int* array;
-} Queue;
+const int Q_SIZE = 10050; 
+int C, head = 0, tail = 0, size = 0, a[Q_SIZE];
 
-//malloc과 realloc의 차이 & free 
-Queue* createQueue(int capacity){
-	Queue* q = (Queue*) malloc(sizeof(Queue));
-	q -> front = 0;
-	q -> rear = -1;
-	q -> capacity = capacity;
-	q -> array = (int*) malloc(capacity * sizeof(int)); 
-	return q;
+int size_q(){
+	return tail - head;	
 }
 
-bool isEmpty(Queue* q){
-	return q -> rear == -1;
+bool empty(){
+	return size_q() == 0;
 }
 
-bool isFull(Queue* q){
-	return q -> rear == (q -> capacity) -1;
+void push(int num){
+	a[tail++] = num; 
 }
 
-void shift(Queue* q){
-	int rear = q -> rear;
-	int* array = q-> array;
-	for(int i=rear; i>=0; i--){
-		array[i+1] = array[i];
-	}	
+int pop(){
+	if(empty()) return -1;
+	return a[head++];
 }
 
-void enqueue(Queue* q, int data){
-	if(isFull(q)){
-		cout << "This Queue is Fulled\n";
-		return;
-	}
-	shift(q);
-	q -> array[q -> front] = data;
-	++q->rear;
-	cout <<  data << " Inserted\n";
+int front(){
+	if(empty()) return -1;
+	return a[head];
 }
 
-int dequeue(Queue* q){
-	if(isEmpty(q)){
-		cout << "Empty Queue\n";
-		return INT_MIN;
-	}
-	return q -> array[q->rear--];
+int back(){
+	if(empty()) return -1;
+	return a[tail-1];
 }
 
 int main(){
-	Queue* q = createQueue(5);
-	enqueue(q, 3);
-	enqueue(q, 4);
-	enqueue(q, 5);
-	
-	cout << q -> front << "\n";
-	cout << q -> rear << "\n";
-	cout << q -> capacity << "\n";
-	int* array = q -> array;
-	for(int i=0; i<= q -> rear; i++){
-		cout << array[i]<< ",";
-	}		
-	cout << "\n";
-	
-	cout << dequeue(q) << "\n";
-	cout << dequeue(q) << "\n";
-	cout << dequeue(q) << "\n";
-	
-	
-	cout << q -> front << "\n";
-	cout << q -> rear << "\n";
-	cout << q -> capacity << "\n";
-	for(int i=0; i<= q -> rear; i++){
-		cout << array[i]<< ",";
-	}		
-	cout << "\n";
-	
+	// #큐 
+	cin >> C;
+	string cmd;
+	int num;
+	int result;
+	while(C--){
+		cin >> cmd;
+		if(cmd.compare("push") == 0){
+			cin >> num;
+			push(num); 
+		}else if(cmd.compare("pop") == 0){
+			result = pop();
+			cout << result << "\n";
+		}else if(cmd.compare("size") == 0){
+			result = size_q();
+			cout << result << "\n";
+		}else if(cmd.compare("empty") == 0){
+			result = empty();
+			cout << result << "\n";
+		}else if(cmd.compare("front") == 0){
+			result = front();
+			cout << result << "\n";
+		}else if(cmd.compare("back") == 0){
+			result = back();
+			cout << result << "\n";
+		}
+	}
 	return 0;
-}
+} 
