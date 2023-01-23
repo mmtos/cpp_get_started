@@ -70,10 +70,18 @@ void findMinValueArrayTest(){
 	cout << min_value_index << " : " << min_value;
 } 
 
+void sortArrayTest(){
+	cout << "\n=====" << __func__ << "=====\n";
+	int a[] = {21,11,3,4};
+	sort(&a[0],&a[0]+4);
+	for(int i=0;i<4;i++) cout << a[i] << " ";
+	cout << "\n";
+}
 int main(){
 	arrayInitTest();
 	arrayInitWithMemsetTest();
 	unsignedCharArrayTest();
 	findMinValueArrayTest();
+	sortArrayTest();
 	return 0;
 }
